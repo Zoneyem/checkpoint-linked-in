@@ -2,6 +2,8 @@ let contacts = document.querySelector(".contacts");
 console.log(contacts);
 let linkedinPeople = [];
 
+
+
 async function catchInfos() {
 	const response = await fetch(
 		"https://dummy-apis.netlify.app/api/contact-suggestions?count=8",
@@ -34,6 +36,15 @@ async function catchInfos() {
 	});
 
 	let count = 0;
+	let storedCount = Number(localStorage.getItem("Pending"))
+	console.log(typeof(storedCount), storedCount)
+	
+
+	//if storedCount exist i.e storedCount !== 0 && null
+	//? ==> if
+	//the left hand side of the ":" is wat you do if the condition is true and the rigth if false
+	storedCount ? console.log("exists") : localStorage.setItem("Pending", 0);
+	
 	const counting = document.querySelector(".forCountingInvitations");
 	const sections = document.querySelectorAll("section");
 	const deleteButton = document.querySelectorAll(".deleteButton");
@@ -49,23 +60,39 @@ async function catchInfos() {
 			if (button.classList.contains("pending")) {
 				button.textContent = "Pending";
 				count += 1;
-				counting.textContent = `${count} pending invitation`;
+				storedCount +=1
+				localStorage.setItem("Pending",storedCount)
+				counting.textContent = `${storedCount} pending invitation`;
 			} else {
 				button.textContent = "Connect";
 				count -= 1;
-				counting.textContent = `${count} pending invitation`;
+				storedCount -= 1;
+				localStorage.setItem("Pending", storedCount);
+
+
+				counting.textContent = `${storedCount} pending invitation`;
 			}
 
-			if (count > 1) {
-				counting.textContent = `${count} pending invitations`;
+			if (storedCount > 1) {
+				counting.textContent = `${storedCount} pending invitations`;
 			}
 
-			if (count == 0) {
+			if (storedCount === 0) {
 				counting.textContent = `No pending invitations`;
 			}
 		});
 	});
-	localStorage.setItem("counting", "count");
+
+	setTimeout(function () {
+		counting.textContent = `${storedCount} pending invitations`;
+		console.log("load event detected!");
+	}, 100); 
+		
+	
+
+	
+	// counting.addEventListener('onload', )
+	// localStorage.setItem("counting", "count");
 
 	deleteButton.forEach((deleteButton, index) => {
 		deleteButton.addEventListener("click", function () {
