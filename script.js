@@ -37,7 +37,7 @@ async function catchInfos() {
 
 	let count = 0;
 	let storedCount = Number(localStorage.getItem("Pending"))
-	console.log(typeof(storedCount), storedCount)
+	
 	
 
 	//if storedCount exist i.e storedCount !== 0 && null
