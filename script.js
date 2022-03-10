@@ -1,11 +1,10 @@
 
 
 
+
 let contacts = document.querySelector(".contacts");
 console.log(contacts);
 let linkedinPeople = [];
-
-
 
 async function catchInfos() {
 	const response = await fetch(
@@ -39,15 +38,13 @@ async function catchInfos() {
 	});
 
 	let count = 0;
-	let storedCount = Number(localStorage.getItem("Pending"))
-	
-	
+	let storedCount = Number(localStorage.getItem("Pending"));
 
 	//if storedCount exist i.e storedCount !== 0 && null
 	//? ==> if
 	//the left hand side of the ":" is wat you do if the condition is true and the rigth if false
 	storedCount ? console.log("exists") : localStorage.setItem("Pending", 0);
-	
+
 	const counting = document.querySelector(".forCountingInvitations");
 	const sections = document.querySelectorAll("section");
 	const deleteButton = document.querySelectorAll(".deleteButton");
@@ -63,15 +60,14 @@ async function catchInfos() {
 			if (button.classList.contains("pending")) {
 				button.textContent = "Pending";
 				count += 1;
-				storedCount +=1
-				localStorage.setItem("Pending",storedCount)
+				storedCount += 1;
+				localStorage.setItem("Pending", storedCount);
 				counting.textContent = `${storedCount} pending invitation`;
 			} else {
 				button.textContent = "Connect";
 				count -= 1;
 				storedCount -= 1;
 				localStorage.setItem("Pending", storedCount);
-
 
 				counting.textContent = `${storedCount} pending invitation`;
 			}
@@ -89,11 +85,8 @@ async function catchInfos() {
 	setTimeout(function () {
 		counting.textContent = `${storedCount} pending invitations`;
 		console.log("load event detected!");
-	}, 100); 
-		
-	
+	}, 100);
 
-	
 	// counting.addEventListener('onload', )
 	// localStorage.setItem("counting", "count");
 
