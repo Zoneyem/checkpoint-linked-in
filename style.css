@@ -2,22 +2,29 @@
 
 body{
     background: whitesmoke;
+    max-width: 1220px;
+     justify-content: center;
+  align-items: center;
+  margin: 0 auto;
 }
 
-.containerWrapper{
- 
+div.container-wrapper{
+ display: grid;
 max-width: 1220px;
   min-height: 10vh;
   margin: 0 auto;
   background: white;
   border: 1px solid black;
+  justify-content: center;
+  align-items: center;
 }
 header{
-    background: lightgrey;
+    background: white;
+    display: inline;
     
 }
 main{
- 
+ max-width: 1220px;
  margin: 0 auto;
   padding: 5px;
   display: grid;
@@ -41,7 +48,7 @@ main{
    position: relative;
    font-size: 20px;
    min-height: 60vh;
-   width: 40ch;
+   width: 28ch;
    
 }
 
@@ -76,8 +83,11 @@ img{
     font-size: 20px;
 }
 
-.spanRight{
+.span-right{
     float: right;
     margin-right: 10px;
 }
 
+.for-ounting-invitations{
+    display: inline;
+}
