@@ -1,3 +1,6 @@
+
+
+
 let contacts = document.querySelector(".contacts");
 console.log(contacts);
 let linkedinPeople = [];
